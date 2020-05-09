@@ -1,8 +1,7 @@
 #################################################################
 ###                         Options                           ###
 #################################################################
-set(BUILD_TESTS "Build the tests" ON)
-set(BUILD_DOCS "Build the docs" OFF)
+option(BUILD_TESTS "Build the tests" OFF)
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 #################################################################
@@ -27,7 +26,7 @@ endif()
 #################################################################
 ###                       Dependencies                        ###
 #################################################################
-
+find_package(Armadillo CONFIG REQUIRED)
 
 
 
@@ -35,31 +34,24 @@ endif()
 ###                         Sources                           ###
 #################################################################
 set(
-    LIB_DEMO_SOURCE_FILES
-    ${PROJECT_SOURCE_DIR}/source/demo.cpp)
+    QRFAC_SOURCE_FILES
+    ${PROJECT_SOURCE_DIR}/source/gram-schmidt.cpp)
 
 
 #################################################################
 ###                         Targets                           ###
 #################################################################
 set                       (PROJECT_INCLUDE_DIR ${PROJECT_SOURCE_DIR}/include)
-add_library               (demo SHARED ${LIB_DEMO_SOURCE_FILES})
-target_include_directories(demo PUBLIC ${PROJECT_INCLUDE_DIR})
-set_target_properties     (demo PROPERTIES CXX_STANDARD 11)
+add_library               (qrfac SHARED ${QRFAC_SOURCE_FILES})
+target_include_directories(qrfac PUBLIC ${PROJECT_INCLUDE_DIR})
+target_link_libraries     (qrfac PRIVATE ${ARMADILLO_LIBRARIES})
+set_target_properties     (qrfac PROPERTIES CXX_STANDARD 11)
 
 
 #################################################################
 ###                        Install                            ###
 #################################################################
 
-
-
-#################################################################
-###                          Docs                             ###
-#################################################################
-if(BUILD_DOCS)
-    add_subdirectory(docs)
-endif()
 
 
 #################################################################

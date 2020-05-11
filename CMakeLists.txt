@@ -5,13 +5,18 @@ option(BUILD_TESTS "Build the tests" OFF)
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 #################################################################
+###                          vcpkg                            ###
+#################################################################
+if(DEFINED ENV{VCPKG_ROOT} AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
+  set(CMAKE_TOOLCHAIN_FILE "$ENV{VCPKG_ROOT}/scripts/buildsystems/vcpkg.cmake"
+      CACHE STRING "")
+endif()
+
+#################################################################
 ###                         Project                           ###
 #################################################################
 cmake_minimum_required(VERSION 3.7)
-include               (cmake/HunterGate.cmake)
-HunterGate            ( URL "https://github.com/cpp-pm/hunter/archive/v0.23.253.tar.gz"
-                        SHA1 "88ea6d37c897a81a080eb9ae0f69d7807bbb3c73")
-project               (YourGreatProjectName VERSION 1.0.0 LANGUAGES CXX)
+project               (QRFactorization VERSION 1.0.0 LANGUAGES CXX)
 
 #################################################################
 ###                         Guards                            ###
@@ -27,7 +32,6 @@ endif()
 ###                       Dependencies                        ###
 #################################################################
 find_package(Armadillo CONFIG REQUIRED)
-
 
 
 #################################################################

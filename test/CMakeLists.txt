@@ -1,6 +1,4 @@
 enable_testing()
-
-hunter_add_package(GTest)
 find_package      (GTest REQUIRED)
 
 add_executable            (demoTest test-main.cpp)

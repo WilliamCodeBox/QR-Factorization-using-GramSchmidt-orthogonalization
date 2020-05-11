@@ -1,6 +1,6 @@
-#include <assert.h>
+#include "gram-schmidt.hpp"
 
-#include <gram-schmidt.hpp>
+#include <cassert>
 
 void GramSchmidt(arma::mat &A, arma::mat &orthonormalizedA) {
     assert(A.n_cols == orthonormalizedA.n_cols &&

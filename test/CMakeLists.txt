@@ -7,7 +7,7 @@ target_include_directories(
                            ${CMAKE_CURRENT_SOURCE_DIR} 
                            ${PROJECT_INCLUDE_DIR} 
                            ${GTEST_INCLUDE_DIRS})
-target_link_libraries    (demoTest PRIVATE demo GTest::GTest GTest::Main)
+target_link_libraries    (demoTest PRIVATE qrfac  GTest::GTest GTest::Main )
 set_target_properties    (demoTest PROPERTIES CXX_STANDARD 11)
 
 add_test(NAME demoTest COMMAND demoTest)

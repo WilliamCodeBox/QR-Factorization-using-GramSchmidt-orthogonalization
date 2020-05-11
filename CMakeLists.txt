@@ -1,7 +1,7 @@
 #################################################################
 ###                         Options                           ###
 #################################################################
-option(BUILD_TESTS "Build the tests" OFF)
+option(BUILD_TESTS "Build the tests" ON)
 set(CMAKE_MODULE_PATH "${PROJECT_SOURCE_DIR}/cmake" ${CMAKE_MODULE_PATH})
 
 #################################################################
@@ -39,7 +39,9 @@ find_package(Armadillo CONFIG REQUIRED)
 #################################################################
 set(
     QRFAC_SOURCE_FILES
-    ${PROJECT_SOURCE_DIR}/source/gram-schmidt.cpp)
+    ${PROJECT_SOURCE_DIR}/source/gram-schmidt.cpp
+    ${PROJECT_SOURCE_DIR}/source/qr-fact.cpp
+    )
 
 
 #################################################################
